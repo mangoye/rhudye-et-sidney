@@ -255,6 +255,88 @@
   nav .nav-cagnotte::after{display:none;}
   nav .nav-cagnotte:hover{background:var(--gold-light);}
   @media(max-width:600px){.lang-switcher{margin-left:0;padding-left:0;border-left:none;margin-top:0.2rem;}}
+
+  /* CAGNOTTE MODAL */
+  .cag-modal-cards{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem;}
+  .cag-modal-card{
+    display:flex;align-items:center;gap:1.2rem;
+    background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.12);
+    border-radius:6px;padding:1.2rem 1.5rem;
+    transition:all 0.3s;cursor:pointer;text-decoration:none;color:inherit;
+  }
+  .cag-modal-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(201,168,76,0.3);transform:translateX(4px);}
+  .cag-modal-icon{
+    width:50px;height:50px;border-radius:50%;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    border:1.5px solid rgba(201,168,76,0.25);
+  }
+  .cag-modal-icon svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.5;}
+  .cag-modal-info{flex:1;}
+  .cag-modal-info-title{
+    font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;
+    color:var(--cream);margin-bottom:0.2rem;
+  }
+  .cag-modal-info-desc{
+    font-family:'Josefin Sans',sans-serif;font-size:0.68rem;font-weight:300;
+    color:var(--text-light);letter-spacing:0.05em;
+  }
+  .cag-modal-arrow{color:var(--gold);font-size:1.2rem;opacity:0.5;transition:all 0.3s;}
+  .cag-modal-card:hover .cag-modal-arrow{opacity:1;transform:translateX(3px);}
+  /* Sub-modal for mobile money */
+  .cag-sub-modal{display:none;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(201,168,76,0.12);}
+  .cag-sub-modal.active{display:block;}
+  .cag-sub-back{
+    display:inline-flex;align-items:center;gap:0.4rem;
+    font-family:'Josefin Sans',sans-serif;font-size:0.65rem;font-weight:300;
+    color:var(--gold);cursor:pointer;margin-bottom:1.2rem;
+    background:none;border:none;letter-spacing:0.1em;transition:opacity 0.3s;
+  }
+  .cag-sub-back:hover{opacity:0.7;}
+  .cag-sub-title{
+    font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;
+    color:var(--cream);text-align:center;margin-bottom:1.2rem;
+  }
+  .cag-money-card{
+    background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.1);
+    border-radius:6px;padding:1.5rem;margin-bottom:1rem;text-align:center;
+  }
+  .cag-money-logo{
+    width:60px;height:60px;border-radius:12px;margin:0 auto 0.8rem;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Josefin Sans',sans-serif;font-weight:500;font-size:0.5rem;
+    letter-spacing:0.05em;text-transform:uppercase;line-height:1.2;
+  }
+  .cag-money-logo.airtel{background:linear-gradient(135deg,#ED1C24,#C41017);color:white;}
+  .cag-money-logo.moov{background:linear-gradient(135deg,#0066B3,#004A8F);color:white;}
+  .cag-money-name{
+    font-family:'Josefin Sans',sans-serif;font-size:0.6rem;font-weight:400;
+    letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;
+  }
+  .cag-money-phone{
+    font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;
+    color:var(--cream);letter-spacing:0.03em;margin-bottom:0.8rem;
+  }
+  .cag-money-call{
+    display:inline-flex;align-items:center;gap:0.4rem;
+    padding:0.55rem 1.5rem;border:1px solid var(--gold);color:var(--gold);
+    font-family:'Josefin Sans',sans-serif;font-size:0.58rem;font-weight:400;
+    letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;
+    border-radius:3px;transition:all 0.3s;
+  }
+  .cag-money-call:hover{background:var(--gold);color:var(--green-dark);}
+  .cag-money-divider{
+    display:flex;align-items:center;gap:1rem;margin:0.8rem 0;
+    color:var(--text-light);font-family:'Josefin Sans',sans-serif;font-size:0.6rem;
+    letter-spacing:0.15em;
+  }
+  .cag-money-divider::before,.cag-money-divider::after{
+    content:'';flex:1;height:1px;background:rgba(201,168,76,0.1);
+  }
+  @media(max-width:550px){
+    .cag-modal-card{padding:1rem;gap:0.8rem;}
+    .cag-modal-icon{width:42px;height:42px;}
+    .cag-modal-icon svg{width:20px;height:20px;}
+  }
 </style>
 </head>
 <body>
@@ -403,10 +485,10 @@
     <p class="cagnotte-text" data-i18n-html="cag_text">
       Votre présence à nos côtés le 17 juillet est notre plus beau cadeau. Mais pour ceux qui le souhaitent, une cagnotte a été mise en place pour nous accompagner dans nos projets et nous aider à construire notre foyer. Chaque geste, quel qu’il soit, nous touche profondément.
     </p>
-    <a href="https://www.lepotcommun.fr/cagnotte/festive/mariage-coutumier-sidney-rhudye-78tvyx6g" target="_blank" rel="noopener" class="cagnotte-btn">
+    <button class="cagnotte-btn" onclick="openCagModal()">
       <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
       <span data-i18n="cag_btn">Participer à la cagnotte</span>
-    </a>
+    </button>
 
     </div></div>
 
@@ -478,7 +560,7 @@ function closeLightbox(){document.getElementById('lightbox').classList.remove('a
 function openInviteModal(){document.getElementById('inviteModal').classList.add('active');document.body.style.overflow='hidden';}
 function closeInviteModal(){document.getElementById('inviteModal').classList.remove('active');document.body.style.overflow='';}
 document.getElementById('inviteModal').addEventListener('click',function(e){if(e.target===this)closeInviteModal();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLightbox();closeInviteModal();}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLightbox();closeInviteModal();closeCagModal();}});
 
 </script>
 
@@ -511,7 +593,12 @@ var T={
     cag_btn:"Participer à la cagnotte",
     contact_f:"Côté de la femme",contact_h:"Côté de l’homme",
     footer_love:"Avec tout notre amour",
-    modal_title:"Carte d’invitation",modal_sub:"Choisissez le format à télécharger et partager"
+    modal_title:"Carte d’invitation",modal_sub:"Choisissez le format à télécharger et partager",
+    cag_modal_title:"Contribuer à la cagnotte",cag_modal_sub:"Choisissez votre mode de participation",
+    cag_opt_intl:"Participer à l’international",cag_opt_intl_desc:"Via Le Pot Commun · Carte bancaire",
+    cag_opt_femme:"Participer du côté de la femme",cag_opt_femme_desc:"Via Airtel Money · Gabon",
+    cag_opt_homme:"Participer du côté de l’homme",cag_opt_homme_desc:"Via Airtel Money ou Moov Money · Gabon",
+    cag_back:"Retour",cag_sub_femme_title:"Côté de la femme",cag_sub_homme_title:"Côté de l’homme",cag_call:"Appeler"
   },
   en:{
     nav_home:"Home",nav_story:"Our Story",nav_details:"Details",nav_pagne:"Attire",nav_photos:"Photos",nav_rsvp:"RSVP",nav_cagnotte:"❤ Gift Fund",
@@ -540,7 +627,12 @@ var T={
     cag_btn:"Contribute to the fund",
     contact_f:"Bride’s side",contact_h:"Groom’s side",
     footer_love:"With all our love",
-    modal_title:"Invitation card",modal_sub:"Choose the format to download and share"
+    modal_title:"Invitation card",modal_sub:"Choose the format to download and share",
+    cag_modal_title:"Contribute to the fund",cag_modal_sub:"Choose how you would like to participate",
+    cag_opt_intl:"Contribute internationally",cag_opt_intl_desc:"Via Le Pot Commun · Bank card",
+    cag_opt_femme:"Contribute on the bride\'s side",cag_opt_femme_desc:"Via Airtel Money · Gabon",
+    cag_opt_homme:"Contribute on the groom\'s side",cag_opt_homme_desc:"Via Airtel Money or Moov Money · Gabon",
+    cag_back:"Back",cag_sub_femme_title:"Bride\'s side",cag_sub_homme_title:"Groom\'s side",cag_call:"Call"
   },
   ko:{
     nav_home:"소개",nav_story:"우리 이야기",nav_details:"세부사항",nav_pagne:"의상",nav_photos:"사진",nav_rsvp:"참석확인",nav_cagnotte:"❤ 축의금",
@@ -569,7 +661,12 @@ var T={
     cag_btn:"기부금 참여",
     contact_f:"신부 측",contact_h:"신랑 측",
     footer_love:"우리의 모든 사랑을 담아",
-    modal_title:"초대장",modal_sub:"다운로드할 형식을 선택하세요"
+    modal_title:"초대장",modal_sub:"다운로드할 형식을 선택하세요",
+    cag_modal_title:"기부금 참여",cag_modal_sub:"참여 방법을 선택하세요",
+    cag_opt_intl:"국제 참여",cag_opt_intl_desc:"Le Pot Commun · 신용카드",
+    cag_opt_femme:"신부 측 참여",cag_opt_femme_desc:"Airtel Money · 가봉",
+    cag_opt_homme:"신랑 측 참여",cag_opt_homme_desc:"Airtel Money 또는 Moov Money · 가봉",
+    cag_back:"뒤로",cag_sub_femme_title:"신부 측",cag_sub_homme_title:"신랑 측",cag_call:"전화하기"
   }
 };
 var currentLang='fr';
@@ -586,5 +683,108 @@ function setLang(lang){
     if(T[lang]&&T[lang][key])el.innerHTML=T[lang][key];
   });
 }
+</script>
+
+<!-- Cagnotte Modal -->
+<div class="modal-overlay" id="cagModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeCagModal()">&times;</button>
+    <div class="modal-ornament">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="#C9A84C" fill="none" stroke-width="1.5"/></svg>
+    </div>
+    <div class="modal-title" data-i18n="cag_modal_title">Contribuer à la cagnotte</div>
+    <div class="modal-subtitle" data-i18n="cag_modal_sub">Choisissez votre mode de participation</div>
+
+    <!-- Main choices -->
+    <div id="cagMainChoices" class="cag-modal-cards">
+      <a href="https://www.lepotcommun.fr/cagnotte/festive/mariage-coutumier-sidney-rhudye-78tvyx6g" target="_blank" rel="noopener" class="cag-modal-card">
+        <div class="cag-modal-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div class="cag-modal-info">
+          <div class="cag-modal-info-title" data-i18n="cag_opt_intl">Participer à l’international</div>
+          <div class="cag-modal-info-desc" data-i18n="cag_opt_intl_desc">Via Le Pot Commun · Carte bancaire</div>
+        </div>
+        <span class="cag-modal-arrow">→</span>
+      </a>
+
+      <div class="cag-modal-card" onclick="showCagSub('femme')">
+        <div class="cag-modal-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div class="cag-modal-info">
+          <div class="cag-modal-info-title" data-i18n="cag_opt_femme">Participer du côté de la femme</div>
+          <div class="cag-modal-info-desc" data-i18n="cag_opt_femme_desc">Via Airtel Money · Gabon</div>
+        </div>
+        <span class="cag-modal-arrow">→</span>
+      </div>
+
+      <div class="cag-modal-card" onclick="showCagSub('homme')">
+        <div class="cag-modal-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div class="cag-modal-info">
+          <div class="cag-modal-info-title" data-i18n="cag_opt_homme">Participer du côté de l’homme</div>
+          <div class="cag-modal-info-desc" data-i18n="cag_opt_homme_desc">Via Airtel Money ou Moov Money · Gabon</div>
+        </div>
+        <span class="cag-modal-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- Sub: Femme -->
+    <div id="cagSubFemme" class="cag-sub-modal">
+      <button class="cag-sub-back" onclick="hideCagSub()">← <span data-i18n="cag_back">Retour</span></button>
+      <div class="cag-sub-title" data-i18n="cag_sub_femme_title">Côté de la femme</div>
+      <div class="cag-money-card">
+        <div class="cag-money-logo airtel">Airtel<br>Money</div>
+        <div class="cag-money-name">Airtel Money</div>
+        <div class="cag-money-phone">+241 74 566 608</div>
+        <a href="tel:+24174566608" class="cag-money-call">📞 <span data-i18n="cag_call">Appeler</span></a>
+      </div>
+    </div>
+
+    <!-- Sub: Homme -->
+    <div id="cagSubHomme" class="cag-sub-modal">
+      <button class="cag-sub-back" onclick="hideCagSub()">← <span data-i18n="cag_back">Retour</span></button>
+      <div class="cag-sub-title" data-i18n="cag_sub_homme_title">Côté de l’homme</div>
+      <div class="cag-money-card">
+        <div class="cag-money-logo airtel">Airtel<br>Money</div>
+        <div class="cag-money-name">Airtel Money</div>
+        <div class="cag-money-phone">+241 77 226 501</div>
+        <a href="tel:+24177226501" class="cag-money-call">📞 <span data-i18n="cag_call">Appeler</span></a>
+      </div>
+      <div class="cag-money-divider">ou</div>
+      <div class="cag-money-card">
+        <div class="cag-money-logo moov">Moov<br>Money</div>
+        <div class="cag-money-name">Moov Money</div>
+        <div class="cag-money-phone">+241 65 528 787</div>
+        <a href="tel:+24165528787" class="cag-money-call">📞 <span data-i18n="cag_call">Appeler</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function openCagModal(){
+  document.getElementById('cagModal').classList.add('active');
+  document.body.style.overflow='hidden';
+  hideCagSub();
+}
+function closeCagModal(){
+  document.getElementById('cagModal').classList.remove('active');
+  document.body.style.overflow='';
+}
+function showCagSub(side){
+  document.getElementById('cagMainChoices').style.display='none';
+  if(side==='femme') document.getElementById('cagSubFemme').classList.add('active');
+  if(side==='homme') document.getElementById('cagSubHomme').classList.add('active');
+}
+function hideCagSub(){
+  document.getElementById('cagMainChoices').style.display='';
+  document.getElementById('cagSubFemme').classList.remove('active');
+  document.getElementById('cagSubHomme').classList.remove('active');
+}
+document.getElementById('cagModal').addEventListener('click',function(e){if(e.target===this)closeCagModal();});
 </script>
 </body></html>
