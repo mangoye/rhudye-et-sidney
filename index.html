@@ -337,6 +337,95 @@
     .cag-modal-icon{width:42px;height:42px;}
     .cag-modal-icon svg{width:20px;height:20px;}
   }
+
+  /* RSVP CONFIRM BUTTON */
+  .rsvp-confirm-btn{
+    display:inline-block;position:relative;
+    padding:1rem 2.5rem;margin-bottom:1.5rem;
+    background:linear-gradient(135deg,var(--gold-dark),var(--gold));
+    color:var(--green-dark);
+    font-family:'Josefin Sans',sans-serif;font-size:0.78rem;font-weight:500;
+    letter-spacing:0.18em;text-transform:uppercase;
+    text-decoration:none;border-radius:50px;border:none;cursor:pointer;
+    transition:all 0.3s;overflow:hidden;
+    box-shadow:0 4px 20px rgba(201,168,76,0.35);
+  }
+  .rsvp-confirm-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.5);}
+  .rsvp-confirm-btn::before{
+    content:'';position:absolute;top:0;left:-100%;width:60px;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);
+    animation:shineBtn 3s infinite;
+  }
+  @keyframes shineBtn{0%{left:-100%;}50%{left:150%;}100%{left:150%;}}
+  .rsvp-wa-note{
+    font-family:'Josefin Sans',sans-serif;font-size:0.72rem;font-weight:300;
+    color:var(--text-light);margin-bottom:0.8rem;letter-spacing:0.05em;
+  }
+  /* RSVP MODAL */
+  .rsvp-modal-step{display:none;}
+  .rsvp-modal-step.active{display:block;}
+  .rsvp-code-input{
+    width:100%;max-width:300px;padding:0.85rem 1.2rem;
+    border:1px solid rgba(201,168,76,0.3);border-radius:4px;
+    background:rgba(255,255,255,0.05);color:var(--cream);
+    font-family:'Josefin Sans',sans-serif;font-size:0.9rem;
+    letter-spacing:0.15em;text-align:center;outline:none;
+    transition:border-color 0.3s;margin:1rem auto;display:block;
+  }
+  .rsvp-code-input:focus{border-color:var(--gold);}
+  .rsvp-code-input::placeholder{color:var(--text-light);letter-spacing:0.1em;font-size:0.75rem;}
+  .rsvp-code-error{
+    font-family:'Josefin Sans',sans-serif;font-size:0.7rem;
+    color:#e74c3c;text-align:center;margin-top:0.5rem;display:none;
+  }
+  .rsvp-code-btn{
+    display:block;margin:1.2rem auto 0;padding:0.7rem 2.5rem;
+    background:var(--gold);color:var(--green-dark);border:none;
+    font-family:'Josefin Sans',sans-serif;font-size:0.65rem;font-weight:500;
+    letter-spacing:0.2em;text-transform:uppercase;border-radius:3px;
+    cursor:pointer;transition:all 0.3s;
+  }
+  .rsvp-code-btn:hover{background:var(--gold-light);}
+  /* FORM */
+  .rsvp-form-grid{text-align:left;max-width:500px;margin:0 auto;}
+  .rsvp-fg{margin-bottom:1.2rem;}
+  .rsvp-fg label{
+    display:block;margin-bottom:0.4rem;
+    font-family:'Josefin Sans',sans-serif;font-size:0.6rem;font-weight:400;
+    letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);
+  }
+  .rsvp-fg input,.rsvp-fg select,.rsvp-fg textarea{
+    width:100%;padding:0.75rem 1rem;
+    border:1px solid rgba(201,168,76,0.2);border-radius:3px;
+    background:rgba(255,255,255,0.05);color:var(--cream);
+    font-family:'Josefin Sans',sans-serif;font-size:0.85rem;font-weight:300;
+    outline:none;transition:border-color 0.3s;
+  }
+  .rsvp-fg input:focus,.rsvp-fg select:focus,.rsvp-fg textarea:focus{border-color:var(--gold);}
+  .rsvp-fg select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23C9A84C' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;}
+  .rsvp-fg select option{background:var(--green);color:var(--cream);}
+  .rsvp-fg textarea{resize:vertical;min-height:70px;}
+  .rsvp-fg .optional{font-size:0.55rem;color:var(--text-light);font-style:italic;text-transform:none;letter-spacing:0.05em;}
+  .rsvp-form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  @media(max-width:500px){.rsvp-form-row{grid-template-columns:1fr;}}
+  .rsvp-submit-btn{
+    display:block;width:100%;padding:0.9rem;margin-top:0.5rem;
+    background:var(--gold);color:var(--green-dark);border:none;
+    font-family:'Josefin Sans',sans-serif;font-size:0.7rem;font-weight:500;
+    letter-spacing:0.2em;text-transform:uppercase;border-radius:3px;
+    cursor:pointer;transition:all 0.3s;
+  }
+  .rsvp-submit-btn:hover{background:var(--gold-light);}
+  .rsvp-submit-btn:disabled{opacity:0.5;cursor:wait;}
+  .rsvp-form-intro{
+    font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:400;
+    line-height:1.7;color:var(--text-cream);text-align:center;
+    margin-bottom:1.8rem;
+  }
+  .rsvp-success-msg{text-align:center;padding:2rem 0;}
+  .rsvp-success-msg .check-icon{font-size:3rem;margin-bottom:1rem;}
+  .rsvp-success-msg h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--cream);margin-bottom:0.5rem;}
+  .rsvp-success-msg p{font-family:'Josefin Sans',sans-serif;font-size:0.78rem;color:var(--text-light);}
 </style>
 </head>
 <body>
@@ -560,7 +649,7 @@ function closeLightbox(){document.getElementById('lightbox').classList.remove('a
 function openInviteModal(){document.getElementById('inviteModal').classList.add('active');document.body.style.overflow='hidden';}
 function closeInviteModal(){document.getElementById('inviteModal').classList.remove('active');document.body.style.overflow='';}
 document.getElementById('inviteModal').addEventListener('click',function(e){if(e.target===this)closeInviteModal();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLightbox();closeInviteModal();closeCagModal();}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLightbox();closeInviteModal();closeCagModal();closeRsvpModal();}});
 
 </script>
 
@@ -598,7 +687,16 @@ var T={
     cag_opt_intl:"Participer à l’international",cag_opt_intl_desc:"Via Le Pot Commun · Carte bancaire",
     cag_opt_femme:"Participer du côté de la femme",cag_opt_femme_desc:"Via Airtel Money · Gabon",
     cag_opt_homme:"Participer du côté de l’homme",cag_opt_homme_desc:"Via Airtel Money ou Moov Money · Gabon",
-    cag_back:"Retour",cag_sub_femme_title:"Côté de la femme",cag_sub_homme_title:"Côté de l’homme",cag_call:"Appeler"
+    cag_back:"Retour",cag_sub_femme_title:"Côté de la femme",cag_sub_homme_title:"Côté de l’homme",cag_call:"Appeler",
+    rsvp_text2:"Votre présence est le plus beau des cadeaux. Confirmez votre venue pour nous aider à préparer au mieux cette belle journée.",
+    rsvp_confirm_btn:"Confirmer votre présence le 17 Juillet",
+    rsvp_wa_note:"Rejoignez aussi notre groupe WhatsApp pour rester informé :",
+    rsvp_code_title:"Code d’invitation",rsvp_code_sub:"Veuillez entrer le code figurant sur votre invitation",
+    rsvp_code_error:"Code incorrect. Veuillez réessayer.",rsvp_code_btn:"Valider",
+    rsvp_form_title:"Confirmation de présence le 17 juillet à Akanda",
+    rsvp_form_intro:"Je souhaite confirmer ma venue le 17 juillet pour le mariage coutumier de Rhudye & Sidney. Cette confirmation nous permet d’organiser au mieux l’espace et l’événement, de préparer les places assises, le repas et de vous accueillir dans les meilleures conditions.",
+    rsvp_f_nom:"Nom",rsvp_f_prenom:"Prénom",rsvp_f_cote:"Côté",rsvp_f_conjoint:"Viendrez-vous accompagné(e) de votre conjoint(e) ?",rsvp_f_tel:"Téléphone / WhatsApp",rsvp_f_optional:"(facultatif)",rsvp_f_comment:"Commentaire",rsvp_f_submit:"Confirmer ma présence",
+    rsvp_success_title:"Merci !",rsvp_success_text:"Votre confirmation a bien été enregistrée. On a hâte de vous retrouver à Libreville !"
   },
   en:{
     nav_home:"Home",nav_story:"Our Story",nav_details:"Details",nav_pagne:"Attire",nav_photos:"Photos",nav_rsvp:"RSVP",nav_cagnotte:"❤ Gift Fund",
@@ -632,7 +730,16 @@ var T={
     cag_opt_intl:"Contribute internationally",cag_opt_intl_desc:"Via Le Pot Commun · Bank card",
     cag_opt_femme:"Contribute on the bride\'s side",cag_opt_femme_desc:"Via Airtel Money · Gabon",
     cag_opt_homme:"Contribute on the groom\'s side",cag_opt_homme_desc:"Via Airtel Money or Moov Money · Gabon",
-    cag_back:"Back",cag_sub_femme_title:"Bride\'s side",cag_sub_homme_title:"Groom\'s side",cag_call:"Call"
+    cag_back:"Back",cag_sub_femme_title:"Bride\'s side",cag_sub_homme_title:"Groom\'s side",cag_call:"Call",
+    rsvp_text2:"Your presence is the most beautiful gift. Please confirm your attendance to help us prepare this wonderful day.",
+    rsvp_confirm_btn:"Confirm your attendance on July 17",
+    rsvp_wa_note:"Also join our WhatsApp group to stay informed:",
+    rsvp_code_title:"Invitation code",rsvp_code_sub:"Please enter the code on your invitation",
+    rsvp_code_error:"Incorrect code. Please try again.",rsvp_code_btn:"Submit",
+    rsvp_form_title:"Attendance confirmation for July 17 in Akanda",
+    rsvp_form_intro:"I wish to confirm my attendance on July 17 for the traditional wedding of Rhudye & Sidney. This confirmation helps us organize the space and event, prepare seating, catering, and welcome you in the best conditions.",
+    rsvp_f_nom:"Last name",rsvp_f_prenom:"First name",rsvp_f_cote:"Side",rsvp_f_conjoint:"Will you be accompanied by your spouse?",rsvp_f_tel:"Phone / WhatsApp",rsvp_f_optional:"(optional)",rsvp_f_comment:"Comment",rsvp_f_submit:"Confirm my attendance",
+    rsvp_success_title:"Thank you!",rsvp_success_text:"Your confirmation has been recorded. We can\'t wait to see you in Libreville!"
   },
   ko:{
     nav_home:"소개",nav_story:"우리 이야기",nav_details:"세부사항",nav_pagne:"의상",nav_photos:"사진",nav_rsvp:"참석확인",nav_cagnotte:"❤ 축의금",
@@ -666,7 +773,16 @@ var T={
     cag_opt_intl:"국제 참여",cag_opt_intl_desc:"Le Pot Commun · 신용카드",
     cag_opt_femme:"신부 측 참여",cag_opt_femme_desc:"Airtel Money · 가봉",
     cag_opt_homme:"신랑 측 참여",cag_opt_homme_desc:"Airtel Money 또는 Moov Money · 가봉",
-    cag_back:"뒤로",cag_sub_femme_title:"신부 측",cag_sub_homme_title:"신랑 측",cag_call:"전화하기"
+    cag_back:"뒤로",cag_sub_femme_title:"신부 측",cag_sub_homme_title:"신랑 측",cag_call:"전화하기",
+    rsvp_text2:"여러분의 참석이 가장 아름다운 선물입니다. 이 아름다운 날을 준비할 수 있도록 참석을 확인해 주세요.",
+    rsvp_confirm_btn:"7월 17일 참석 확인하기",
+    rsvp_wa_note:"정보를 받으시려면 WhatsApp 그룹에도 가입하세요:",
+    rsvp_code_title:"초대 코드",rsvp_code_sub:"초대장에 있는 코드를 입력해 주세요",
+    rsvp_code_error:"코드가 올바르지 않습니다. 다시 시도해 주세요.",rsvp_code_btn:"확인",
+    rsvp_form_title:"7월 17일 Akanda 참석 확인",
+    rsvp_form_intro:"Rhudye & Sidney의 전통 결혼식에 7월 17일 참석을 확인합니다. 이 확인은 공간과 행사 준비, 좌석 및 식사 준비에 도움이 됩니다.",
+    rsvp_f_nom:"성",rsvp_f_prenom:"이름",rsvp_f_cote:"측",rsvp_f_conjoint:"배우자와 함께 오시나요?",rsvp_f_tel:"전화번호 / WhatsApp",rsvp_f_optional:"(선택사항)",rsvp_f_comment:"코멘트",rsvp_f_submit:"참석 확인",
+    rsvp_success_title:"감사합니다!",rsvp_success_text:"확인이 등록되었습니다. 리브르빌에서 만나기를 기대합니다!"
   }
 };
 var currentLang='fr';
@@ -786,5 +902,147 @@ function hideCagSub(){
   document.getElementById('cagSubHomme').classList.remove('active');
 }
 document.getElementById('cagModal').addEventListener('click',function(e){if(e.target===this)closeCagModal();});
+</script>
+
+<!-- RSVP Modal -->
+<div class="modal-overlay" id="rsvpModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeRsvpModal()">&times;</button>
+
+    <!-- Step 1: Code -->
+    <div class="rsvp-modal-step active" id="rsvpStep1">
+      <div class="modal-ornament">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="#C9A84C" fill="none" stroke-width="1.5"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="#C9A84C" fill="none" stroke-width="1.5"/></svg>
+      </div>
+      <div class="modal-title" data-i18n="rsvp_code_title">Code d’invitation</div>
+      <div class="modal-subtitle" data-i18n="rsvp_code_sub">Veuillez entrer le code figurant sur votre invitation</div>
+      <input type="text" class="rsvp-code-input" id="rsvpCodeInput" placeholder="Code d'invitation" autocomplete="off">
+      <div class="rsvp-code-error" id="rsvpCodeError" data-i18n="rsvp_code_error">Code incorrect. Veuillez réessayer.</div>
+      <button class="rsvp-code-btn" onclick="checkRsvpCode()" data-i18n="rsvp_code_btn">Valider</button>
+    </div>
+
+    <!-- Step 2: Form -->
+    <div class="rsvp-modal-step" id="rsvpStep2">
+      <div class="modal-title" data-i18n="rsvp_form_title">Confirmation de présence le 17 juillet à Akanda</div>
+      <div class="section-divider" style="margin-top:1rem;"></div>
+      <p class="rsvp-form-intro" data-i18n-html="rsvp_form_intro">Je souhaite confirmer ma venue le 17 juillet pour le mariage coutumier de Rhudye & Sidney. Cette confirmation nous permet d’organiser au mieux l’espace et l’événement, de préparer les places assises, le repas et de vous accueillir dans les meilleures conditions.</p>
+
+      <div class="rsvp-form-grid">
+        <div class="rsvp-form-row">
+          <div class="rsvp-fg">
+            <label data-i18n="rsvp_f_nom">Nom</label>
+            <input type="text" id="rsvpNom" required>
+          </div>
+          <div class="rsvp-fg">
+            <label data-i18n="rsvp_f_prenom">Prénom</label>
+            <input type="text" id="rsvpPrenom" required>
+          </div>
+        </div>
+        <div class="rsvp-fg">
+          <label data-i18n="rsvp_f_cote">Côté</label>
+          <select id="rsvpCote">
+            <option value="">-- Choisir --</option>
+            <option value="Homme / Sidney">Homme / Sidney</option>
+            <option value="Femme / Rhudye">Femme / Rhudye</option>
+          </select>
+        </div>
+        <div class="rsvp-fg">
+          <label data-i18n="rsvp_f_conjoint">Viendrez-vous accompagné(e) de votre conjoint(e) ?</label>
+          <select id="rsvpConjoint">
+            <option value="">-- Choisir --</option>
+            <option value="Oui">Oui</option>
+            <option value="Non">Non</option>
+          </select>
+        </div>
+        <div class="rsvp-fg">
+          <label data-i18n="rsvp_f_tel">Téléphone / WhatsApp</label>
+          <input type="tel" id="rsvpTel" placeholder="+241 __ __ __ __">
+        </div>
+        <div class="rsvp-fg">
+          <label>Email <span class="optional" data-i18n="rsvp_f_optional">(facultatif)</span></label>
+          <input type="email" id="rsvpEmail">
+        </div>
+        <div class="rsvp-fg">
+          <label><span data-i18n="rsvp_f_comment">Commentaire</span> <span class="optional" data-i18n="rsvp_f_optional">(facultatif)</span></label>
+          <textarea id="rsvpComment" rows="3"></textarea>
+        </div>
+        <button class="rsvp-submit-btn" id="rsvpSubmitBtn" onclick="submitRsvp()" data-i18n="rsvp_f_submit">Confirmer ma présence</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Success -->
+    <div class="rsvp-modal-step" id="rsvpStep3">
+      <div class="rsvp-success-msg">
+        <div class="check-icon">✔</div>
+        <h3 data-i18n="rsvp_success_title">Merci !</h3>
+        <p data-i18n="rsvp_success_text">Votre confirmation a bien été enregistrée. On a hâte de vous retrouver à Libreville !</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function openRsvpModal(){
+  document.getElementById('rsvpModal').classList.add('active');
+  document.body.style.overflow='hidden';
+  document.getElementById('rsvpStep1').classList.add('active');
+  document.getElementById('rsvpStep2').classList.remove('active');
+  document.getElementById('rsvpStep3').classList.remove('active');
+  document.getElementById('rsvpCodeInput').value='';
+  document.getElementById('rsvpCodeError').style.display='none';
+}
+function closeRsvpModal(){
+  document.getElementById('rsvpModal').classList.remove('active');
+  document.body.style.overflow='';
+}
+function checkRsvpCode(){
+  var code=document.getElementById('rsvpCodeInput').value.trim();
+  if(code==='1960@1990A'){
+    document.getElementById('rsvpStep1').classList.remove('active');
+    document.getElementById('rsvpStep2').classList.add('active');
+    document.getElementById('rsvpCodeError').style.display='none';
+  } else {
+    document.getElementById('rsvpCodeError').style.display='block';
+  }
+}
+document.getElementById('rsvpCodeInput').addEventListener('keydown',function(e){if(e.key==='Enter')checkRsvpCode();});
+document.getElementById('rsvpModal').addEventListener('click',function(e){if(e.target===this)closeRsvpModal();});
+
+// GOOGLE APPS SCRIPT URL - REPLACE WITH YOUR OWN
+var RSVP_SCRIPT_URL='https://script.google.com/macros/s/AKfycbwwBtcRef6DGKrF025f1DAxHvvy3hFPvua2pQ5SRAUC8Q0eNiGe3eyWwYeG2QucnKWJ/exec';
+
+function submitRsvp(){
+  var nom=document.getElementById('rsvpNom').value.trim();
+  var prenom=document.getElementById('rsvpPrenom').value.trim();
+  var cote=document.getElementById('rsvpCote').value;
+  var conjoint=document.getElementById('rsvpConjoint').value;
+  var tel=document.getElementById('rsvpTel').value.trim();
+  var email=document.getElementById('rsvpEmail').value.trim();
+  var comment=document.getElementById('rsvpComment').value.trim();
+
+  if(!nom||!prenom||!cote||!conjoint||!tel){
+    alert(currentLang==='ko'?'필수 항목을 모두 입력해 주세요.':currentLang==='en'?'Please fill in all required fields.':'Veuillez remplir tous les champs obligatoires.');
+    return;
+  }
+  var btn=document.getElementById('rsvpSubmitBtn');
+  btn.disabled=true;
+  btn.textContent=currentLang==='ko'?'전송 중...':currentLang==='en'?'Sending...':'Envoi en cours...';
+
+  var data={nom:nom,prenom:prenom,cote:cote,conjoint:conjoint,tel:tel,email:email,comment:comment,date:new Date().toISOString()};
+
+  fetch(RSVP_SCRIPT_URL,{
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(data)
+  }).then(function(){
+    document.getElementById('rsvpStep2').classList.remove('active');
+    document.getElementById('rsvpStep3').classList.add('active');
+  }).catch(function(){
+    document.getElementById('rsvpStep2').classList.remove('active');
+    document.getElementById('rsvpStep3').classList.add('active');
+  });
+}
 </script>
 </body></html>
