@@ -33,7 +33,7 @@
   .hero-names{opacity:0;animation:fadeUp 1.2s 0.5s forwards;line-height:1.1;margin:0.3rem 0;}
   .hero-name{font-family:'Pinyon Script',cursive;font-size:clamp(3rem,10vw,6.5rem);color:var(--cream);display:inline-block;}
   .hero-amp{font-family:'Allura',cursive;font-size:clamp(2rem,7vw,4.5rem);color:var(--gold);display:inline-block;margin:0 0.12em;}
-  .hero-date{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:1rem;letter-spacing:0.3em;color:var(--gold);margin-top:0.5rem;opacity:0;animation:fadeUp 1s 0.7s forwards;}
+  .hero-date{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:1rem;letter-spacing:0.3em;color:var(--gold);margin-top:0.8rem;opacity:0;animation:fadeUp 1s 0.7s forwards;}
   .hero-time{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.78rem;letter-spacing:0.2em;color:var(--text-light);margin-top:0.15rem;opacity:0;animation:fadeUp 1s 0.8s forwards;}
   .hero-location{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-light);margin-top:0.15rem;opacity:0;animation:fadeUp 1s 0.85s forwards;}
   
@@ -122,13 +122,13 @@
   /* INVITATION MODAL */
   .invite-btn{
     display:inline-flex;align-items:center;gap:0.6rem;
-    margin-top:1.5rem;padding:0.75rem 2.2rem;
-    border:1px solid var(--gold);color:var(--gold);
+    margin-top:0.4rem;padding:0.75rem 2.2rem;
+    border:none;color:var(--gold);
     font-family:'Josefin Sans',sans-serif;font-size:0.65rem;font-weight:400;
     letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;
     transition:all 0.3s;border-radius:2px;cursor:pointer;background:transparent;
   }
-  .invite-btn:hover{background:var(--gold);color:var(--green-dark);}
+  .invite-btn:hover{color:var(--gold-light);}
   .invite-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;}
   .modal-overlay{
     display:none;position:fixed;inset:0;z-index:10001;
@@ -341,19 +341,18 @@
   /* RSVP CONFIRM BUTTON */
   .rsvp-confirm-btn{
     display:inline-block;position:relative;
-    padding:1rem 2.5rem;margin-bottom:1.5rem;
-    background:linear-gradient(135deg,var(--gold-dark),var(--gold));
-    color:var(--green-dark);
-    font-family:'Josefin Sans',sans-serif;font-size:0.78rem;font-weight:500;
-    letter-spacing:0.18em;text-transform:uppercase;
-    text-decoration:none;border-radius:50px;border:none;cursor:pointer;
+    padding:0.85rem 2.5rem;margin-bottom:1rem;
+    background:transparent;
+    color:var(--gold);
+    font-family:'Josefin Sans',sans-serif;font-size:0.72rem;font-weight:400;
+    letter-spacing:0.2em;text-transform:uppercase;
+    text-decoration:none;border-radius:3px;border:1px solid var(--gold);cursor:pointer;
     transition:all 0.3s;overflow:hidden;
-    box-shadow:0 4px 20px rgba(201,168,76,0.35);
   }
-  .rsvp-confirm-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.5);}
+  .rsvp-confirm-btn:hover{transform:translateY(-2px);background:var(--gold);color:var(--green-dark);}
   .rsvp-confirm-btn::before{
     content:'';position:absolute;top:0;left:-100%;width:60px;height:100%;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);
+    background:linear-gradient(90deg,transparent,rgba(201,168,76,0.25),transparent);
     animation:shineBtn 3s infinite;
   }
   @keyframes shineBtn{0%{left:-100%;}50%{left:150%;}100%{left:150%;}}
@@ -452,7 +451,9 @@
     <div class="hero-time" data-i18n="hero_time">à 13h00</div>
     <div class="hero-location">Libreville · Gabon</div>
 
-    <button class="invite-btn" onclick="openInviteModal()" style="opacity:0;animation:fadeUp 1s 1s forwards;">
+    <button class="rsvp-confirm-btn" onclick="openRsvpModal()" style="opacity:0;animation:fadeUp 1s 1s forwards;margin-top:1.5rem;" data-i18n="rsvp_confirm_btn">Confirmer votre présence au mariage</button>
+
+    <button class="invite-btn" onclick="openInviteModal()" style="opacity:0;animation:fadeUp 1s 1.2s forwards;">
       <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       <span data-i18n="hero_dl_btn">Télécharger l’invitation</span>
     </button>
@@ -556,7 +557,11 @@
 
 <section class="rsvp-section" id="rsvp"><div class="reveal">
   <div class="section-label" data-i18n="rsvp_label">Votre réponse</div><h2 class="section-title" data-i18n="rsvp_title">Confirmez votre venue</h2><div class="section-divider"></div>
-  <p class="rsvp-text" data-i18n-html="rsvp_text">Votre présence est le plus beau des cadeaux. Rejoignez notre groupe WhatsApp pour confirmer votre venue, poser vos questions et rester informé de toutes les nouvelles concernant la cérémonie.</p>
+  <p class="rsvp-text" data-i18n-html="rsvp_text2">Votre présence est le plus beau des cadeaux. Confirmez votre venue pour nous aider à préparer au mieux cette belle journée.</p>
+
+    <button class="rsvp-confirm-btn" onclick="openRsvpModal()" data-i18n="rsvp_confirm_btn">Confirmer votre présence au mariage</button>
+
+    <p class="rsvp-wa-note" data-i18n="rsvp_wa_note">Rejoignez aussi notre groupe WhatsApp pour rester informé :</p>
   <a href="https://chat.whatsapp.com/BHGxmMbSXXvFG2pUUcnWxA?mode=gi_t" target="_blank" rel="noopener" class="whatsapp-btn">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     <span data-i18n="rsvp_btn">Rejoindre le groupe WhatsApp</span>
@@ -689,7 +694,7 @@ var T={
     cag_opt_homme:"Participer du côté de l’homme",cag_opt_homme_desc:"Via Airtel Money ou Moov Money · Gabon",
     cag_back:"Retour",cag_sub_femme_title:"Côté de la femme",cag_sub_homme_title:"Côté de l’homme",cag_call:"Appeler",
     rsvp_text2:"Votre présence est le plus beau des cadeaux. Confirmez votre venue pour nous aider à préparer au mieux cette belle journée.",
-    rsvp_confirm_btn:"Confirmer votre présence le 17 Juillet",
+    rsvp_confirm_btn:"Confirmer votre présence au mariage",
     rsvp_wa_note:"Rejoignez aussi notre groupe WhatsApp pour rester informé :",
     rsvp_code_title:"Code d’invitation",rsvp_code_sub:"Veuillez entrer le code figurant sur votre invitation",
     rsvp_code_error:"Code incorrect. Veuillez réessayer.",rsvp_code_btn:"Valider",
@@ -732,7 +737,7 @@ var T={
     cag_opt_homme:"Contribute on the groom\'s side",cag_opt_homme_desc:"Via Airtel Money or Moov Money · Gabon",
     cag_back:"Back",cag_sub_femme_title:"Bride\'s side",cag_sub_homme_title:"Groom\'s side",cag_call:"Call",
     rsvp_text2:"Your presence is the most beautiful gift. Please confirm your attendance to help us prepare this wonderful day.",
-    rsvp_confirm_btn:"Confirm your attendance on July 17",
+    rsvp_confirm_btn:"Confirm your attendance at the wedding",
     rsvp_wa_note:"Also join our WhatsApp group to stay informed:",
     rsvp_code_title:"Invitation code",rsvp_code_sub:"Please enter the code on your invitation",
     rsvp_code_error:"Incorrect code. Please try again.",rsvp_code_btn:"Submit",
@@ -775,7 +780,7 @@ var T={
     cag_opt_homme:"신랑 측 참여",cag_opt_homme_desc:"Airtel Money 또는 Moov Money · 가봉",
     cag_back:"뒤로",cag_sub_femme_title:"신부 측",cag_sub_homme_title:"신랑 측",cag_call:"전화하기",
     rsvp_text2:"여러분의 참석이 가장 아름다운 선물입니다. 이 아름다운 날을 준비할 수 있도록 참석을 확인해 주세요.",
-    rsvp_confirm_btn:"7월 17일 참석 확인하기",
+    rsvp_confirm_btn:"결혼식 참석 확인하기",
     rsvp_wa_note:"정보를 받으시려면 WhatsApp 그룹에도 가입하세요:",
     rsvp_code_title:"초대 코드",rsvp_code_sub:"초대장에 있는 코드를 입력해 주세요",
     rsvp_code_error:"코드가 올바르지 않습니다. 다시 시도해 주세요.",rsvp_code_btn:"확인",
